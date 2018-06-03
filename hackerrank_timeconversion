@@ -1,0 +1,22 @@
+"""This program converts a 12 hour time to 24 hour time system"""
+
+
+time=input()
+if((time[8]+time[9])=="PM"):#checking wheter its PM or AM
+    if((time[0]+time[1])=="12"):
+        print(time[0:8])
+    else:
+        
+        final=str(int(time[0]+time[1])+12)+time[2:8] #the final time with the changes made 
+    
+    
+        print(final)
+else:
+    if((time[0]+time[1])=="12"):
+        final="00"+time[2:8] #adding 00 to the time if the time is 12 AM
+        print(final)
+    else:
+        
+        
+        print(time[0:8])
+    
