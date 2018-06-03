@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jun  3 11:55:23 2018
+
+@author: SOHAM DUTTA
+"""
+
+# Iterative Python program to search an element
+# in linked list
+ 
+# Node class
+class Node:
+     
+    # Function to initialise the node object
+    def __init__(self, data):
+        self.data = data # Assign data
+        self.next = None # Initialize next as null
+ 
+# Linked List class
+class LinkedList:
+    def __init__(self):
+        self.head = None # Initialize head as None
+ 
+    # This function insert a new node at the
+    # beginning of the linked list
+    def push(self, new_data):
+     
+        # Create a new Node
+        new_node = Node(new_data)
+ 
+        # 3. Make next of new Node as head
+        new_node.next = self.head
+ 
+        # 4. Move the head to point to new Node
+        self.head = new_node
+        
+    def printlist(self):
+        temp=self.head
+        while(temp):
+            print(temp.data)
+            temp=temp.next
+ 
+   # this function finds the elementof the node 
+    def findnode(self, x):
+        temp=self.head #temporary data
+        count=0 #countto track the index 
+        while(temp !=None):
+            if (count==x):
+               
+                return(temp.data)
+            else:
+                count=count+1
+                temp=temp.next
+                
+            
+     
+      
+ 
+# Code execution starts here
+if __name__ == '__main__':
+ 
+    # Start with the empty list
+    llist = LinkedList()
+ 
+    ''' Use push() to construct below list
+        1->10->30->14-'''
+    llist.push(14);
+    llist.push(30);
+    llist.push(10);
+    llist.push(1);
+    llist.printlist();
+    print("The element at the nth node is",llist.findnode(7))
+    
+ 
+   
