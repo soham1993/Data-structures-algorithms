@@ -1,0 +1,21 @@
+num=input()
+n=int(num)
+matrix=[]
+for k in range(n):
+    
+    a=list(map(int,input().split()))
+    matrix.append(a)
+
+
+
+ld=0
+pd=0   #variables for left diaganol and principal diagonal
+for i in range(n):
+    for j in range(len(matrix[i])):
+        if(i==j):
+            ld=ld+matrix[i][j]
+        if ((i+j)==(n-1)):
+            pd=pd+matrix[i][j]
+           
+diff=abs(ld-pd)
+print(diff)
