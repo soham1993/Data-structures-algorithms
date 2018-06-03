@@ -1,0 +1,33 @@
+"""A program to find out how many candles a person can blow .
+sample input:3,3,2,1
+as the person will blow the longest candle so the occurence of the longest candle will be 2.so sample output is :2 """
+
+
+def maxheight(arr,n):#function to find the maximum height of the candles 
+    max=0
+    for i in range(n):
+        if(arr[i]>max):
+            max=arr[i]
+    return max
+
+def maxcandles(arr,n,max):# function to find the ma=maximum occurence of candles with the maximum height
+   
+    count=0
+    for i in range(n):
+        if (arr[i]==max):
+            count=count+1
+    return count
+
+n1=int(input())
+mat=[]
+for i in range (n1):
+    num=(input())
+    num1=int(num)
+    mat.append(num1)
+    
+c=maxcandles(mat,n1,k)
+k=maxheight(mat,n1)
+
+print("The maximum number of the candles blown is:",c)
+
+    
