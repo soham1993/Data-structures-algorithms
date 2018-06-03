@@ -1,4 +1,5 @@
 # Node class
+"" this function finds a node from the end of the linked list"""
 class Node:
      
     # Function to initialise the node object
