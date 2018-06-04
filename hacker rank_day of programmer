@@ -1,0 +1,29 @@
+"""the program finds the 256th day of the year depending on whether it is a leap year or non-leap year"""
+
+
+
+year=(input())
+date=".09."+year
+y=int(year)
+l_y=[31,29,31,30,31,30,31,31,30,31,30,31] #leap year days
+nl_y=[31,28,31,30,31,30,31,31,30,31,30,31]#non-leap year days
+sum=0
+diff=0
+if(y%400==0 or(y%4==0 or y%100!=0 )):
+    for i in range (12):
+        sum=sum+l_y[i]
+        l_y[i]=sum #finding the cumulative sum
+        if(sum>256):
+            break
+    diff=256-l_y[i-1]  #checking the difference of previous date 
+    date=str(diff)+date
+    print(date)
+else:
+     for i in range (12):
+        sum=sum+nl_y[i]
+        nl_y[i]=sum #finding the cumulative sum
+        if(sum>256):
+            break
+     diff=256-nl_y[i-1] #checking the difference of previous date 
+     date=str(diff)+date
+     print(date)
