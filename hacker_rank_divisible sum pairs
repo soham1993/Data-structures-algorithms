@@ -1,0 +1,15 @@
+"""This programs finds out divisible pairs(i,j) from a given array where (i<j)""
+
+
+n=list(map(int,input().split()))
+arr=list(map(int,input().split()))
+count=0    
+for j in range(n[0]):
+    sum=0
+    for k in range(j+1,n[0]): #starting the loop fom the next of the previous one 
+        if (((arr[j]+arr[k])%n[1])==0):
+            count=count+1
+           
+        else:
+            continue
+print(count)
