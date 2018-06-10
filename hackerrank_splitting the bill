@@ -1,0 +1,18 @@
+
+
+
+a=list(map(int,input().split()))
+items=list(map(int,input().split()))
+charge=input()
+charge_int=int(charge) #amount charged 
+     
+s=0
+
+s=int((sum(arr[0:a[1]])+sum(arr[a[1]+1:len(arr)]))/2) #splliting the bills
+
+if((charge_int-s)<=0):
+    
+    print("Bon apetit")
+else:
+    print(charge_int-s)
+     
