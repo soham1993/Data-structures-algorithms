@@ -1,0 +1,84 @@
+
+#VBA macro code for vlooking up from another sheet 
+
+
+Sub file_ready1()
+'
+' file_ready1 Macro
+'
+' Keyboard Shortcut: Ctrl+Shift+D
+'
+    Columns("B:B").Select
+    Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Range("B1").Select
+    
+    
+    'ActiveCell.FormulaR1C1 = "Variable Description"
+    '
+    
+    ActiveCell.FormulaR1C1 = _
+        "=VLOOKUP(RC[-1],'[Variable List.xlsx]Sheet1'!R2C2:R1208C3,2,0)"
+   ' Range("B2").Select
+   '
+    Selection.Copy
+    Range("A1").Select
+    
+    Selection.End(xlDown).Select
+    Selection.Offset(0, 1).Select
+    Range(Selection, Selection.End(xlUp)).Select
+    
+     Selection.pastespecial xlFormulas
+   
+   Range("B1").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Copy
+    Selection.pastespecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Application.CutCopyMode = False
+'    Application.Goto Reference:="PERSONAL.XLSB!pastespecial"
+'
+    Sheets("Overall AVP").Select
+    Columns("B:D").Select
+    ActiveSheet.Shapes.AddChart2(227, xlLine).Select
+    ActiveChart.SetSourceData Source:=Range("'Overall AVP'!$B:$D")
+    ActiveChart.ChartTitle.Select
+    ActiveChart.ChartTitle.Text = "AVP"
+    Selection.Format.TextFrame2.TextRange.Characters.Text = "AVP"
+    With Selection.Format.TextFrame2.TextRange.Characters(1, 3).ParagraphFormat
+        .TextDirection = msoTextDirectionLeftToRight
+        .Alignment = msoAlignCenter
+    End With
+    With Selection.Format.TextFrame2.TextRange.Characters(1, 3).Font
+        .BaselineOffset = 0
+        .Bold = msoFalse
+        .NameComplexScript = "+mn-cs"
+        .NameFarEast = "+mn-ea"
+        .Fill.Visible = msoTrue
+        .Fill.ForeColor.RGB = RGB(89, 89, 89)
+        .Fill.Transparency = 0
+        .Fill.Solid
+        .Size = 14
+        .Italic = msoFalse
+        .Kerning = 12
+        .Name = "+mn-lt"
+        .UnderlineStyle = msoNoUnderline
+        .Spacing = 0
+        .Strike = msoNoStrike
+    End With
+    ActiveChart.ChartArea.Select
+    ActiveSheet.Shapes("Chart 1").IncrementLeft 304.687480315
+    ActiveSheet.Shapes("Chart 1").IncrementTop -98.437480315
+    Sheets("Fit Stats").Select
+    Rows("3:3").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.Delete Shift:=xlUp
+    Range("E2").Select
+    Selection.NumberFormat = "0%"
+    Sheets(Array("VIF", "Overall Sign Check", "Pct Wrong Sign")).Select
+    Sheets("Pct Wrong Sign").Activate
+    ActiveWindow.SelectedSheets.Delete
+    Sheets("Final Coefficients").Select
+    
+   
+     
+End Sub
