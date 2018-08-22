@@ -1,0 +1,31 @@
+#Data Engineering
+
+
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+import numpy as np
+import pandas as pd
+
+file=pd.read_csv("D:/VFitChart_Passenger Truck.csv")
+arr=np.array([])
+for x ,y in zip(file.iloc[:,1],file.iloc[:,3]):
+   
+  
+    if(y[0:10]=="LN_SLS_UNP"):
+       
+        if(y[10:]) !=str(x):
+            y=str(y)+"_canibalization_"+str(x)
+    arr=np.append(arr,y)
+    
+
+df=pd.DataFrame(arr,columns=["Effect1"])
+result=file.join(df)
+            
+         
+
+
+result.to_csv("D:/New Microsoft Excel Worksheet.csv")
